@@ -1,6 +1,7 @@
 html {
 	transform: scaleY(-1);
 	cursor: none;
+	background-color: black;
 }
 
 body {
