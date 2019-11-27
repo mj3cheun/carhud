@@ -5,6 +5,7 @@
   "main": "init.js",
   "scripts": {
     "start": "electron .",
+    "build": "webpack front_end/main.js -o front_end/bundle.js --mode development",
     "lint": "eslint ./front_end --fix && eslint ./init.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,14 +13,22 @@
   "license": "MIT",
   "dependencies": {
     "python-shell": "^1.0.8",
-    "react": "^16.10.2"
+    "react": "^16.10.2",
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-transform-react-jsx-source": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
     "electron": "^6.0.12",
     "eslint": "^6.5.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^1.7.0"
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   }
 }
