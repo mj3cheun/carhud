@@ -1,26 +1,37 @@
 const React = require('react');
 
-const D3Gauge = require('./D3Gauge.jsx');
+const SpeedometerAnalog = require('./SpeedometerAnalog.jsx');
+const SpeedometerDigital = require('./SpeedometerDigital.jsx');
 
 class Root extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      gaugePercent: 0.10,
-    };
+      vehicleState: {
+        speed: 60,
+        unit: 'km/h'
+      }
+    }
 
-    window.setGauge = this.setGauge;
-  }
-
-  setGauge = (per) => {
-    this.setState({gaugePercent: per});
+    window.x = (y) => this.setState(y);
+    window.vehicle = (y) => this.setState({vehicleState: y});
   }
 
   render() {
+    const centerDisplacement = 20;
+    const zoom = 1.2;
     return (
-      <div className='root'>
-        CarHUD
-        <D3Gauge percentage={this.state.gaugePercent}/>
+      <div
+        className='root'
+        style={{
+          marginTop: `${-centerDisplacement}vh`,
+          transform: `scale(${zoom})`
+        }}
+      >
+        <SpeedometerAnalog {...this.state.vehicleState}>
+          <SpeedometerDigital {...this.state.vehicleState}/>
+        </SpeedometerAnalog>
       </div>
     );
   }

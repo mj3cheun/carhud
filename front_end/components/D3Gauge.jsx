@@ -13,7 +13,8 @@ class D3Gauge extends React.Component {
     startAngle: PropTypes.number,
     endAngle: PropTypes.number,
     percentage: PropTypes.number,
-    speed: PropTypes.number
+    speed: PropTypes.number,
+    children: PropTypes.node
   }
 
   static defaultProps = {
@@ -136,13 +137,16 @@ class D3Gauge extends React.Component {
 
     this.foreground.attr('d', this.arc.endAngle(TWOPI * currentPercent));
     this.front.attr('d', this.arc.endAngle(TWOPI * currentPercent));
-    this.numberText.text(formatPercent((currentPercent * TWOPI - startAngle) / (endAngle - startAngle)));
+    // turn off for now
+    // this.numberText.text(formatPercent((currentPercent * TWOPI - startAngle) / (endAngle - startAngle)));
   }
 
 
   render() {
     return (
-      <div className='D3Gauge' ref="rootElement"/>
+      <div className='D3Gauge' ref="rootElement">
+        {this.props.children}
+      </div>
     );
   }
 }
